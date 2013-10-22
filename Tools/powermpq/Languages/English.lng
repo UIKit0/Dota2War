@@ -1,0 +1,188 @@
+#Language file for PowerMPQ 1.3
+
+[Language]
+Name=English
+Author=Translated by Wilds
+
+[Menu]
+File=&File
+New=&New
+Open=&Open...
+Close=&Close
+Recents=&Recents
+NoRecents=No recent files
+Exit=&Exit
+
+Edit=&Edit
+SelectAll=Select &all
+SelectNone=Select &none
+Invert=&Invert selection
+Find=Find...
+FindNext=Find next
+
+View=&View
+StatusBar=&Status bar
+ToolBar=&Tool bar
+ClassicStyle=&Classic style
+ExplorerStyle=&Explorer style
+Sort=S&ort by...
+Name=&Name
+Ext=&Extension
+Size=&Size
+Compressed=&Compressed Size
+Ratio=&Ratio
+Attribute=&Attribute
+Refresh=&Refresh
+
+Action=&Action
+AddFiles=Add &files...
+AddDir=Add &dir...
+Extract=&Extract...
+Rename=&Rename
+Delete=&Delete
+
+Tools=&Tools
+Export=E&xport list files...
+ExportTXT=as &text
+ExportHTML=as &HTML
+MakeEXE=&Make executable file...
+MPQEmbedder=MPQ &Embedder...
+
+Options=&Options
+Configuration=&Configuration...
+
+HomePage=&PowerMPQ Home Page...
+About=&About...
+
+PopupOpen=Open
+PopupExtract=Extract...
+PopupRename=Rename
+PopupDelete=Delete
+PopupInfoFile=Informations...
+PopupCreateDir=Make dir...
+
+[ToolBar]
+New=New
+NewToolTip=Create new MPQ Archive...
+Open=Open
+OpenToolTip=Open a MPQ Archive...
+InfoMPQ=Info MPQ
+InfoMPQToolTip=Show MPQ Property...
+Add=Add
+AddToolTip=Add files in archive...
+Extract=Extract
+ExtractToolTip=Extract files from archive...
+Delete=Delete
+DeleteToolTip=Delete file from archive
+View=View
+ViewToolTip=View file
+InfoFile=Info File
+InfoFileToolTip=Show selected file's property...
+MakeEXE=Make EXE
+MakeEXEToolTip=Make EXE with MPQDraft...
+Exit=Exit
+ExitToolTip=Exit from PowerMPQ
+
+[Column]
+Name=Name
+Ext=Ext.
+Size=Size
+Compressed=Comp. Size
+Ratio=Ratio
+Attribute=Attribute
+
+[StatusBar]
+Delete=Deleting file %v
+Extract=Extracting file %v
+Add=Adding file %v
+Ready=Ready
+Open=Opening MPQ archive - %v
+ReadList=Reading list from %v
+AdditionalList=Reading extern list
+
+[Message]
+Delete=Do you want delete files?
+RemoveFileList=Do you want remove the list?
+CreateDir=New dir
+
+[InfoMPQ]
+Property=Property
+Compression=Compression
+Path=Path:
+Name=File Name:
+Size=Size:
+Decompress=Decompressed:
+NFiles=Total Files:
+NFilesView=View Files:
+Last=Last Edit:
+
+[InfoFile]
+Property=Property
+Compression=Compression
+Name=Name:
+Type=Type:
+Size=Size:
+Compress=Compressed Size:
+Ratio=Ratio:
+Attribute=Attribute:
+Path=Path:
+
+[Configuration]
+Configuration=Configuration
+General=General
+Compression=Compression
+FileList=File Lists
+Language=Language
+NewArchive=New Archive
+MaxFiles=Maximum files for new archives:
+BlockSize=Block Size:
+Encrypt=Encrypt files in MPQ archive
+Associate=Associate PowerMPQ to MPQ archive
+Standard=Standard
+Default=Default Compression
+Deflate=Deflate Compression Level
+Custom=Custom
+Extension=File Extension
+CompressionType=Compression Type
+Audio=Audio Compression
+Lowest=Lowest (Best quality)
+Medium=Medium
+Highest=Highest (Least space)
+AddExt=Add
+RemoveExt=Remove
+AddList=Add List File...
+RemoveList=Remove
+UseList=Do not use above lists when one is found in archive
+AutoDetectFile=Autodetect file type
+SelectLanguage=Select language:
+Ok=Ok
+Cancel=Cancel
+
+[Various]
+Version=Version 
+ThisProgramUse=This program use
+
+[MPQEmbedder]
+FileName=Inserit a file name:
+Information=Information
+Add=Add MPQ...
+ExportMPQ=Export MPQ...
+ExportEXE=Export EXE...
+Close=Close
+NoFile=No file.
+OkMPQ=This file contains an MPQ archive.
+KoMPQ=This file contains an MPQ archive, but other programs may not be able to read it.
+NoMPQ=This file does not contain an MPQ archive.
+IsMPQ=This file is an MPQ archive.
+NoEXE=This file isn't an EXE file.
+
+[Filter]
+mpq=MPQ Archives (*.mpq)
+scm=StarCraft Maps (*.scm;*.scx)
+w3m=WarCraft3 Maps (*.w3m;*.w3x)
+w3n=WarCraft3 Campaigns (*.w3n)
+exe=Executable files (*.exe)
+allmpq=All MPQ archives (*.mpq;*.exe;*.snp;*.scm;*.scx;*.w3m;*.w3x;*.w3n)
+all=All files (*.*)
+txt=Text Documents (*.txt)
+html=HTML Documents (*.html)

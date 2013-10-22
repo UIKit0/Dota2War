@@ -1,0 +1,167 @@
+#Language file for PowerMPQ 1.1
+
+[Language]
+Name=Russian
+Author=Translated by FUNT
+
+[Menu]
+File=&Файл
+New=&Новый
+Open=&Открыть...
+Close=&Закрыть
+Recents=&Последние
+NoRecents=Нет последних файлов
+Exit=&Выход
+
+Edit=&Редактировать
+SelectAll=Выбрать &все
+SelectNone=Снять &выбор
+Invert=&Инвертировать выбор
+Find=Найти...
+FindNext=Найти далее
+
+View=&Вид
+StatusBar=&Полоса статуса
+ToolBar=&Полоса инструметнов
+ClassicStyle=&Классический стиль
+ExplorerStyle=&Стиль проводника
+Sort=У&порядочить по...
+Name=&Имени
+Size=&Размеру
+Compressed=&Сжатому размеру
+Ratio=&Степень сжатия
+Attribute=&Аттрибутам
+Refresh=&Обновить
+
+Action=&Действие
+AddFiles=Добавить &файлы...
+AddDir=Добавить &папку...
+Extract=&Распаковать...
+Rename=&Переименовать
+Delete=&Удалить
+
+Tools=&Инструменты
+MakeEXE=&Создать EXE файл...
+MPQEmbedder=Вставить &mpq в exe...
+
+Options=&Опции
+Configuration=&Конфигурация...
+
+About=&О программе...
+
+PopupOpen=Открыть
+PopupExtract=Распаковать...
+PopupRename=Переименовать
+PopupDelete=Удалить
+PopupInfoFile=Информация...
+PopupCreateDir=Создать папку...
+
+[ToolBar]
+New=Новый
+NewToolTip=Создать новый MPQ архив...
+Open=Открыть
+OpenToolTip=Открыть MPQ архив...
+InfoMPQ=Информация об MPQ
+InfoMPQToolTip=Показать св-ва MPQ архива...
+Add=Добавить
+AddToolTip=Добавить файлы в архив...
+Extract=Распаковать
+ExtractToolTip=Распаковать файлы из архива...
+Delete=Удалить
+DeleteToolTip=Удалить файл из архива
+View=Просмотр
+ViewToolTip=Просмотреть файл
+InfoFile=Инфо файла
+InfoFileToolTip=Показать св-ва выбранного...
+MakeEXE=Создать EXE
+MakeEXEToolTip=Создать EXE с MPQDraft...
+Exit=Выход
+ExitToolTip=Выход из PowerMPQ
+
+[Column]
+Name=Имя
+Size=Размер
+Compressed=Сжатый размер
+Ratio=Степень сжатия
+Attribute=Аттрибуты
+
+[StatusBar]
+Delete=Удаление файла %v
+Extract=Распаковка файла %v
+Add=Добавление файла %v
+Ready=Готово
+Open=Открытие MPQ архива - %v
+ReadList=Чтений файл-листа из %v
+
+[Message]
+Delete=Вы хотите удалить файлы?
+RemoveFileList=Хотите удалить файл-лист?
+CreateDir=Новая папка
+
+[InfoMPQ]
+Property=Свойство
+Compression=Компрессия
+Path=Путь:
+Name=Имя файла:
+Size=Размер:
+Decompress=Распакованный:
+NFiles=Всего файлов:
+NFilesView=Просмотр файлов:
+Last=Последнее изменение:
+
+[InfoFile]
+Property=Свойство
+Compression=Компрессия
+Name=Имя:
+Type=Тип:
+Size=Размер:
+Compress=Сжатый размер:
+Ratio=Степень сжатия:
+Attribute=Аттрибут:
+Path=Путь:
+
+[Configuration]
+Configuration=Конфигурация
+General=Общее
+Compression=Компрессия
+FileList=Файлы-листы
+Language=Язык(русский)
+MaxFiles=Максимум файлов для новых архивов: (нельзя изменить для существующих архивов)
+Encrypt=Шифровать файлы в MPQ
+Associate=Ассоциировать *.MPQ с powermpq
+Standard=Стандарт
+Default=Компрессия по умолчанию
+Deflate=Пониженный уровень компрессии
+Custom=Ручное
+Extension=Расширений файла
+CompressionType=Тип сжатия
+Audio=Сжатие аудио
+Lowest=Наименьшее (Хорошее качество)
+Medium=Среднее
+Highest=Высочайшее (Меньше места)
+AddExt=Добавить
+RemoveExt=Удалить
+AddList=Добавить файл-лист...
+RemoveList=Удалить
+UseList=Не использовать если в архиве есть свой
+SelectLanguage=Выберите язык:
+Ok=Ок
+Cancel=Отмена
+
+[Various]
+Version=Версия 
+ThisProgramUse=Эта программа использует
+
+[MPQEmbedder]
+FileName=Куда вставлять:
+Information=Информация
+Add=Добавить MPQ...
+ExportMPQ=Экспорт MPQ...
+ExportEXE=Экспорт EXE...
+Close=Закрыть
+NoFile=Нет файла.
+OkMPQ=В файле есть MPQ архив.
+KoMPQ=В файле есть MPQ архив, некоторые программы не смогут его использовать.
+NoMPQ=В файле нет MPQ архива.
+IsMPQ=Это MPQ ахив.
+NoEXE=Это не EXE файл.

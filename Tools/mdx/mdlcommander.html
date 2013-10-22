@@ -1,0 +1,728 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>MakeMDL Commandline Parameters</title>
+                                           
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-15">
+         <!-- <killbanner> /-->
+</head>
+  <body>
+            
+<h1>MDLCommander v1.03<br>
+               </h1>
+                 This program is an interface between the gmax export plugin
+  FSModelExp.dle       and MakeMDL.exe. It's purpose is to save and allow
+modification  of makemdl      parameters for any model created and exported
+with gmax as  well as intercepting     the exported x-files to make exports
+easier in final  stages of developement     and to be able to offer models
+in a way i do for  my MoriartyDock Hangar   model.  It is a batch program,
+that is it doesn't  popup with a dialog.<br>
+            
+<h2>Content</h2>
+     <a href="#Version_Info">Version Info</a><br>
+            <a href="#Legal__Licence">Legal &amp; Licence</a><br>
+            <a href="#Installation">Installation</a><br>
+            <a href="#Function">Function</a><br>
+            <a href="#Parameterfile">Parameterfile for MDLCommander</a><br>
+            <a href="#Logfile_mdlcommander.log">Logfile</a><br>
+            <a href="#Parameters_for_MDLCommander">Parameters for MDLCommander</a><br>
+            <a href="#Parameters_for_MakeMDL">Parameters for MakeMDL</a><br>
+            <a href="#Tutorial:_How_to_Set_Up_a_Project_for">Tutorial</a><br>
+            <a href="#Advantage_of_Having_x-files">Advantage of Having x-files</a><br>
+            <a href="#Missing_Parameters">Missing Parameters</a><br>
+            <a href="#Information">Gimme Feedback</a><br>
+            <a href="#Known_and_Potential_Problems">Known and Potential Problems</a><br>
+            
+<h2><a name="Version_Info"></a>Version Info</h2>
+         
+<h3>Version 1.03 - 07/02/2002</h3>
+   
+<ul>
+    <li>bug fixed: blanks in path names of output file are now treated correct. 
+Note: don't use blanks in the file name, just in the path part since makemdl 
+seems to have a problem with blanks in the file name.</li>
+   <li>found a way to pass the -latlon parameter correctly with blank in
+coordinates (<a href="#latlon">see here</a>).<br>
+   </li>
+   
+</ul>
+   
+<h3>Version 1.02</h3>
+         
+<ul>
+       <li>optimized for use with Middleman. If you are using Middleman,
+get   the new version too from <a href="http://thegreatptmd.tripod.com">Chris
+File's</a>  site.</li>
+       <li>added +batch and +nocompile option<br>
+       </li>
+         
+</ul>
+         
+<h2><a name="Legal__Licence"></a>Legal &amp; Licence</h2>
+                 This is freeware and provided as is. I guarantee for absolutely
+    nothing.     Use as is at own risk. It may not be used for commercial
+purposes.    It may not be republished to any site or in any package without
+prior written    permission by <a href="mailto:docmoriarty@gmx.net">Doc Moriarty</a>.
+ Exclusive    Copyright Doc Moriarty 2002 - all rights reserved.      
+<h2><a name="Installation"></a>Installation</h2>
+            <b>Without</b> using <a
+ href="http://thegreatptmd.tripod.com" target="_blank">Middleman  by Chris
+File</a> :<br>
+            <br>
+            Use windows explorer and navigate to your gmax plugins folder.
+ Rename     the   original makemdl.exe to mkmdl.exe. Then copy MDLCommander.exe
+ to  the   plugins   folder and rename it to makemdl.exe, so that mdlcommander 
+  gets  called  instead   of the original makemdl.<br>
+            <br>
+            Export pipeline will be: gmax -&gt; fsmodelexp -&gt; mdlcommander 
+  -&gt;   makemdl<br>
+            <br>
+            <b>With</b> using <a href="http://thegreatptmd.tripod.com"
+ target="_blank">Middleman  by Chris File</a> :<br>
+             <br>
+            Use windows explorer and navigate to your gmax plugins folder.
+ Leave    Middleman   there as 'makemdl.exe'. Rename 'makem.exe' which is
+the original    Microsoft   makemdl.exe to mkmdl.exe. Copy mdlcommander.exe
+there and name    mdlcommander.exe   to makem.exe. So mdlcommander will now
+sit between middleman    and original   makemdl. (Note: didn't test it prior
+to writing this but  this  should work   well). When using middlemen then
+i recommend setting options  via middleman,   not via the .par - files for
+mdlcommander (see below) except  for options  unique to mdlcommander.<br>
+            <br>
+            Export pipeline will be: gmax -&gt; fsmodelexp -&gt; middleman
+ -&gt;    mdlcommander   -&gt; makemdl<br>
+            
+<h2><a name="Function"></a>Function</h2>
+                 It's called instead of original makemdl and intercepts the 
+ parameters      for  makemdl.exe. It looks for a file in the same directory 
+ as your exported      .mdl  or .bgl file  named yourexportfile.par. ("yourexportfile"
+  = name   of   your exported .mdl or .bgl  file). In this file which can
+be  edited  by any   texteditor like NOTEPAD, you can place any parameter
+you  want for  makemdl.exe.   These parameters are appended to the parameters
+ provided by  FSModelExp and   then makemdl is called.<br>
+                 That way you can always save and use the same modelspecific
+  parameters      for  a certain model. They will automatically be used for
+  every export   of this model once placed in the .par file.<br>
+               <br>
+               <b>NOTE:</b> usually makemdl is called with the -b (batch) 
+parameter.      The  disadvantage  when exporting an aircraft is, that you 
+can't alter   the   makemdl  options. So mdlcommander removes this parameter 
+which causes   makemdl   to pop up. If you want it back in, put it in the 
+yourexportfile.par   file.   Then exporting will be as seemless as it was 
+before but still with   extra  parameters read from the .par file.<br>
+            
+<h2><a name="Parameterfile"></a>Parameterfile</h2>
+                 You can write a parameterfile for every exported model.
+It's   name   is  always  the name  of the exported model and the extension
+.par   and it's   expected  in the same  directory where the exported model
+resides.    Lines  beginning with ';' or '#'  are treated as comment lines.
+Empty lines    are ignored. Additional   parameters for makemdl can be written
+ in one  or  more lines. If you use one  line per parameter, it's easy to
+comment  or uncomment single parameters  for tests if necessary. I usually
+comment  the parameterfiles since i tend  to forget the meaning of parameters
+over  time :), even if i write the programs myself.<br>
+                 The parameterfile may contain makemdl parameters as well 
+as  mdlcommander     parameters.<br>
+   If you prefer using a dialog for that parameter stuff, i urgently recommend 
+ using Middleman as mentioned above in the installation section. MDLCommander 
+ doesn't rely on having a parameter file, this is optional to make life easier 
+ and Middleman now offers access to MDLCommander parameters too.<br>
+   <br>
+                 <b>NOTE: Don't use filenames with blanks !!!</b><br>
+            
+<h3>Example Parameterfile:</h3>
+            
+<pre># these are parameters for exporting my aircraft<br># -b       shut up (batch)<br># -keep    keeps all intermediate files .asm and such<br># -i       ignore warnings<br># -i8-     do not ignore bad triggers (might be important for stock anims)<br># -in-     do not ignore bad normals<br># -viewlog view logs in case of error (only if -b deactivated)<br>-b<br>-i<br>-in-<br>-i8-<br>-keep<br>-viewlog<br>+savexfile<br><br></pre>
+                  I usually switch off all the ignore-flags except warnings 
+ (-i,   -in-   -i8)  since the -b option switches everything to ignore which 
+ causes   makemdl   to  run through smoothly and you will never know that 
+you might   have a bug   in  your object names (expecting them to animate 
+but used wrong   misspelled   name  etc.).<br>
+            
+<h3>Example using +autointerior (see below for description of own parameters):</h3>
+            
+<pre># these are parameters for exporting my aircraft with automatically<br># creating the interior model file for MakeMDL<br># -b       shut up (batch)<br># -keep    keeps all intermediate files .asm and such<br># -i       ignore warnings<br># -i8-     do not ignore bad triggers (might be important for stock anims)<br># -in-     do not ignore bad normals<br># -viewlog view logs in case of error (only if -b deactivated)<br><br>-b<br>-i<br>-in-<br>-i8-<br>-keep<br>-viewlog<br>+savexfile<br>+autointerior</pre>
+            
+<h2><a name="Logfile_mdlcommander.log"></a>Logfile mdlcommander.log</h2>
+            MDLcommander writes a logfile to the current work directory everytime
+     it   is called. The current work directory usually is the directory
+to   which    the model is exported. It contains information about original 
+and   modified     parameters  for makemdl as well as the returncode. It's 
+overwritten   everytime     you export  a model to that directory. You can 
+use it for problem  detection.   If you have problems with MDLCommander, then
+send me at least  this logfile   so that i can determine what might have
+gone wrong.<br>
+            
+<h2><a name="Parameters_for_MDLCommander"></a>Parameters for MDLCommander</h2>
+             MDLCommander knows a couple own parameters. In contrary to MakeMDL
+   -  Parameters   they use the switch character '+' instead of '-' for easier
+   recognition.<br>
+            
+<table cellpadding="2" cellspacing="2" border="1" width="100%">
+               <tbody>
+                 <tr>
+                   <td valign="top" bgcolor="#cccccc"><b>Parameter</b><br>
+                   </td>
+                   <td valign="top" bgcolor="#cccccc"><b>Info</b><br>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td valign="top">+savexfile<br>
+                   </td>
+                   <td valign="top">The modelfile is intercepted and saved
+ as  modelname.x    in the output directory - There you got your .x-file
+!  I recommend  use this option always for a couple reasons:<br>
+     I can pass then mymodel.x to makemdl which will drive it into automatically 
+  adding any .x - LOD or _interior.x files to the LOD tab. Also you have something
+  to look into if stuff doesn't get exported as you want it, perhaps gives
+ you an idea whats wrong.<br>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td valign="top">+autointerior<br>
+                   </td>
+                   <td valign="top">The modelfile is intercepted and saved
+ as  modelname_interior.x    in the output directory. Don't use with -b switch 
+  since MDLCommander can't    pass the interior file name as parameter to 
+MakeMDL.  Instead when MakeMDL    pops up you have to go to the LOD - tab 
+and add the  ..._interior.x file  there  to the LOD-names with the add button.<br>
+             Autointerior just makes it easier to model, since you can use
+ one   model    as exterior AND interior model without having to manually
+copy any  files   before continuing with MakeMDL. Thats done by MDLCommander.<br>
+            Note: don't set this for scenery objects - nothing bad will happen, 
+  just doesn't make much sense !<br>
+     Also: If the exported models name ends with ..._interior then this flag
+  is ignored since mdlcommander assumes this already IS the interior model.<br>
+                   </td>
+                 </tr>
+         <tr>
+           <td valign="top">+batch<br>
+           </td>
+           <td valign="top">This flag is meant for programs like middleman
+ which  might want to re-enable the batch mode of makemdl from the commandline, 
+ since  mdlcommander removes the -b flag from commandline automatically to 
+ interrupt  makemdl. If +batch is set, then mdlcommander passes a -b flag 
+to makemdl and things run through smoothly. May also be placed in par files 
+but doesn't really make sense, can use -b there as well.<br>
+           </td>
+         </tr>
+         <tr>
+           <td valign="top">+nocompile<br>
+           </td>
+           <td valign="top">Instead of calling makemdl at the end it just 
+returns   to gmax without compiling. This is the option you need in final 
+stages of   developement or if you just want to get the .x - file without 
+compiling.<br>
+           </td>
+         </tr>
+                        
+  </tbody>      
+</table>
+            
+<h2><a name="Parameters_for_MakeMDL"></a>Parameters for MakeMDL</h2>
+                 There are more parameters than outlined in the MakeMDL SDK 
+ documentation.       Write parameters with leading minus ('-') signs and 
+lowercase letters.    The  "Tested" column just says, that i have tested that,
+it doesn't mean   that it doesn't work if you use it.<br>
+            
+<table cellpadding="2" cellspacing="2" border="1" width="100%">
+                   <tbody>
+                     <tr>
+                       <td valign="top" bgcolor="#cccccc"><b>Parameter<br>
+                       </b></td>
+                       <td valign="top" bgcolor="#cccccc"><b>Tested<br>
+                       </b></td>
+                       <td valign="top" bgcolor="#cccccc"><b>Info<br>
+                       </b></td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-out:output_file<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Define name of output file. Avoid 
+blanks    in  filenames<br>
+                 Default same as input with .mdl or .bgl extension.<br>
+                 Usually not needed.<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-latlon:&lt;lla&gt;<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top"><a name="latlon"></a>Define latitude 
+and longitude for scenery    in  the   default notation, that is an asterisk 
+after degrees followed by   decimal  -  minutes.<br>
+                 Example -latlon:"N35*37.56 E5*33.47"<br>
+       <b>Note:</b> write coordinates exactly as shown using the quotes around 
+the coordinates and a blank before the 'E' or 'W'. The quotation marks are 
+needed because of this blank.<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-b / -batch<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Generate and exit. This switch also 
+ enables    all   ignore  errors and ignore warning switches unless they are
+ set as  additional    switches  (see below). When set, you usually can't 
+enter options  in makemdl    when exporting  an aircraft.<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-bgl<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Model is scenery<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-mdl<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Model is aircraft<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-cf<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Generate CFS2 aircraft<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-fs8<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Generate FS8 (=FS 2002) aircraft, 
+this   is  the   default.<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-crash-<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Disable generation of crash tree<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-vis-<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Disable the parts_visible tests<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-nightmap<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Assume a night texture exists (texture
+   name   ending    with "_LM")<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-reflectmap<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Assume a reflection map exists (texture
+   name   ending   with "_T")<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-lightmap<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Assume a light map exists (texture
+ name   ending    with  "_L")<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-damagemap<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Assume a damage map exists (texture 
+ name   ending    with  "_D")<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-nightmap-<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Assume NO night texture exists<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-reflectmap-<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Assume NO reflect map exists<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-damagemap-<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Assume NO damage map exists<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-lightmap-<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Assume NO light map exists<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top" bgcolor="#ffcccc"><br>
+                       </td>
+                       <td valign="top" bgcolor="#ffcccc"><br>
+                       </td>
+                       <td valign="top" bgcolor="#ffcccc"><b>INOFFICIAL PARAMETERS</b><br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-z<br>
+                       </td>
+                       <td valign="top">no<br>
+                       </td>
+                       <td valign="top">Negate Z<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-r<br>
+                       </td>
+                       <td valign="top">no<br>
+                       </td>
+                       <td valign="top">No left to right<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-swap<br>
+                       </td>
+                       <td valign="top">no<br>
+                       </td>
+                       <td valign="top">Swap bank and heading<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-debug<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">Debug mode: Adds some more of the 
+hidden  options to the option tab of makemdl.<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-viewlog<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">view logfiles on error but not if 
+-b  (-batch)<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-viewbgl<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">view generated .asm file on successful
+   generation,      but actually just shows the header bgl file containing
+ the  crash tree,   not   the "flesh".<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-view<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">view model ? no change, perhaps you 
+ need   a  special    viewer<br>
+                       </td>
+                     </tr>
+                     <tr>
+        <td valign="top">-keep<br>
+        </td>
+        <td valign="top">yes<br>
+        </td>
+        <td valign="top">keep intermediate  files (.azm etc.)<br>
+        </td>
+      </tr>
+      <tr>
+                       <td valign="top">-keeperrorlog<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">keep error log (wouldn't have guessed 
+that !)<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-il<br>
+                       </td>
+                       <td valign="top">no<br>
+                       </td>
+                       <td valign="top">ignore libraries<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-i8 <br>
+                 -i8-<br>
+                       </td>
+                       <td valign="top">yes</td>
+                       <td valign="top">ignore bad animaton triggers<br>
+                 do not ignore bad animation triggers<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-in<br>
+               -in-<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">ignore bad normals<br>
+               do not ignore bad normals<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-i<br>
+               -i-<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       </td>
+                       <td valign="top">ignore warnings<br>
+               do not ignore warnings<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-texpage<br>
+                       </td>
+                       <td valign="top">no<br>
+                       </td>
+                       <td valign="top">Texture page hack ?<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-softmat<br>
+                       </td>
+                       <td valign="top">no<br>
+                       </td>
+                       <td valign="top">Soft image material<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-fullmat<br>
+                       </td>
+                       <td valign="top">no<br>
+                       </td>
+                       <td valign="top">use full material (default)<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-deffallback<br>
+                       </td>
+                       <td valign="top">no<br>
+                       </td>
+                       <td valign="top">Use default fallback color<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-specularcanopy<br>
+                       </td>
+                       <td valign="top">no<br>
+                       </td>
+                       <td valign="top">Specular canopy hack ??<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-weld / -w<br>
+                 -weld- / -w-<br>
+                       </td>
+                       <td valign="top">yes<br>
+                       <br>
+                       </td>
+                       <td valign="top">Weld points<br>
+                 Do not weld points<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-dll<br>
+                       </td>
+                       <td valign="top">no<br>
+         </td>
+                       <td valign="top">Writes mdl using an old style within 
+ a dll, cfs2 option does this automatically.<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-optimize<br>
+                       </td>
+                       <td valign="top">no<br>
+                       </td>
+                       <td valign="top">Optimize (Default)<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-flat<br>
+                       </td>
+                       <td valign="top">no<br>
+                       </td>
+                       <td valign="top">Flatten - make one object from whole 
+ mesh, eliminates all animations too<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-noanimate<br>
+                       </td>
+                       <td valign="top">no<br>
+                       </td>
+                       <td valign="top">No animations<br>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td valign="top">-vistest<br>
+                       </td>
+                       <td valign="top">no<br>
+                       </td>
+                       <td valign="top">If visible parts thest then do clip 
+ test   as  well<br>
+                       </td>
+                     </tr>
+                        
+  </tbody>      
+</table>
+            
+<h2><a name="Tutorial:_How_to_Set_Up_a_Project_for"></a>Tutorial: How to
+Set Up a Project for Efficient Work with MDLCommander</h2>
+            Pretend you are working on a model named 'MyModel.gmax'. It should
+   be  in  a folder within your FS 2002 installation like: ....\FS2002\aircraft\model\MyModel.gmax.
+      Assume you just created the model. So until the model isn't anywhere
+ near     finished you just need this ONE model to make outside AND inside
+ (VC).        
+<ol>
+              <li>Open NOTEPAD and create in this folder a file named MyModel.par.
+     This  step has only to be done for initial parameter setup.</li>
+              <li>Copy and paste the content of one of the above example
+parameterfiles       in this file and add / modify the parameters as needed
+using the tables     of  parameters above.</li>
+              <li>Set +savexfile and  +autointerior parameters, so you always 
+  get  the  original x-file and the copy of it to MyModel_interior.x. <b>NOTE: 
+  You  don't  need +autointerior for scenery objects ! </b>If you need to 
+change  parameters   at a later stage, just open the file again and change 
+whatever  you need.</li>
+              <li>Export your model from within gmax. No need to copy and 
+make   groups    from your model at this stage. MDLCommander will always save
+the   x-files.    When MakeMDL pops up, go to the LOD Tab, press the ADD-Button,
+  add the MyModel_interior.x   file to the LOD files (if its an aircraft).</li>
+              <li>Press Start button in MakeMDL to compile the model.</li>
+            
+</ol>
+            At a later stage, when modelling is completely finished, you
+might    want   to optimize your aircraft model. Now in gmax save your full
+model   to a new   file named MyModel_interior.gmax and MyModel_shadow.gmax.
+Optimize    them as  needed, for example remove outer fuselage from the interior
+(VC)    model. Remove  lots of details and interior from shadow model, perhaps
+even   rebuild some  high poly outside stuff with fewer polys for the shadow
+model.<br>
+            
+<ol>
+              <li>Remove the +autointerior switch from the MyModel.par file.
+  Now   you   got an extra model for that, so auto-copy isn't necessary anymore.
+   Make sure  you have the +savexfile option in the MyModel.par file. You
+now  need a par file for all models, for example MyModel.par, MyModel_interior.par 
+  and MyModel_shadow.par.<br>
+              </li>
+              <li>To export interior and shadow model, open one of these
+models    in  gmax  and export. When MakeMDL pops up, just press exit button
+or use   the +nocompile option in the parameter files or from within Middleman.</li>
+              <li>Open your regular (outside) model in gmax, export it OR 
+just   open   MakeMDL and open there a current version of the regular MyModel.x 
+  - file. When MakeMDL   pops up, go to LOD Tab and add the files MyModel_interior.x 
+  and MyModel_shadow.x    there. Press the Start button and now you get an 
+ optimized model for outside,    inside and the shadows and you still didn't 
+ have to fiddle around with copying,   renaming objects, moving center points 
+ and all that crap.</li>
+            
+</ol>
+            
+<h2><a name="Advantage_of_Having_x-files"></a>Advantage of Having x-files</h2>
+            You should ask that Fox and Scully.<br>
+            <br>
+            Actually you can use them to:<br>
+            
+<ul>
+              <li>take a look at what's really exported, sometimes giving 
+you   hints   what might be wrong with your model</li>
+              <li>find some undocumented features (there are some interesting 
+  things    in them).<br>
+              </li>
+              <li>you can publish objects like my hangar which comes as x-file.
+   Only   MakeMDL is needed to place an object, NOT gmax, which is a big
+advantage.       So you can publish a library of x-files as freeware placeable
+with just     MakeMDL.<br>
+              </li>
+            
+</ul>
+            
+<h2><a name="Missing_Parameters"></a>Missing Parameters</h2>
+             I'm still missing a way to set orientation and distance for
+scenery     objects   as parameters.  If someone knows something i wouldn't
+mind getting    a mail to  <a href="mailto:docmoriarty@gmx.net">Doc Moriarty</a>.<br>
+            
+<h2><a name="Information"></a>Gimme Feedback</h2>
+                 Direct inquiries, useful information, suggestions to <a
+ href="mailto:docmoriarty@gmx.net?subject=mdlcommander">Doc Moriarty</a> .
+Don't expect fast answers :)<br>
+            
+<h2><a name="Known_and_Potential_Problems"></a>Known and Potential Problems</h2>
+            I used it now for like 200+ exports of my scenery and aircraft
+ objects.     There currently is no known problem. <br>
+            <br>
+            BUT: <br>
+            
+<ul>
+              <li>using it on a windows other than Windows 2000 might cause 
+ problems     due to the use of very low level windows API functions, drop 
+ me a note  if   you have that sort of problem.</li>
+              <li>intercepting the x-file involves decryption with translation
+   tables.    These tables might still not be correct for all possible characters.
+   I only   once found a problem after i finished the initial version, but
+ there  might   still be problems with some special characters. I recommend
+ that you use  the following characters in object names, material names and
+ texture  map names (case doesn't matter): letters 'A'-'Z', numbers '0'-'9',
+ '$', '_'  . Do not use any other special or national characters like umlauts
+ or accents.   Do not use blanks in names.</li>
+              <li>I had 2 or 3 times a problem, where MakeMDL said that interior
+    is  an invalid x-file, then i just exported again and it worked well.
+I  believe    though that this error is actually caused by corrupt memory
+or  something.    So if you have that effect, just export again. If it persists
+  though, drop    me a note and de-install mdlcommander by renaming the files
+  back to original    names.</li>
+            
+</ul>
+     <br>
+                  <br>
+    <br>
+   <br>
+  <br>
+ <br>
+</body>
+</html>

@@ -1,0 +1,167 @@
+#Language file for PowerMPQ 1.1
+
+[Language]
+Name=Portugues
+Author=Traduzido por JPiolho
+
+[Menu]
+File=&Ficheiro
+New=&Novo
+Open=&Abrir...
+Close=&Fechar
+Recents=&Ficheiros Recentes
+NoRecents=Não há ficheiros recentes
+Exit=&Exit
+
+Edit=&Editar
+SelectAll=Selecionar &tudo
+SelectNone=Selecionar &nada
+Invert=&Inverter seleção
+Find=Procurar...
+FindNext=Procurar Proximo
+
+View=&Ver
+StatusBar=&Barra de status
+ToolBar=&Barra de Ferramentas
+ClassicStyle=&Estilo classico
+ExplorerStyle=&Estilo Explorer
+Sort=S&ortido por...
+Name=&Nome
+Size=&Tamanho
+Compressed=&Tamanho compressado
+Ratio=&Ratio
+Attribute=&Atributo
+Refresh=&Recarregar
+
+Action=&Acção
+AddFiles=Adicionar &ficheiros...
+AddDir=Adicionar &pasta...
+Extract=&Extrair...
+Rename=&Alterar nome
+Delete=&Apagar
+
+Tools=&Ferramentas
+MakeEXE=&Fazer um ficheiro executable...
+MPQEmbedder=MPQ &Embedder...
+
+Options=&Opções
+Configuration=&Configuração...
+
+About=&About...
+
+PopupOpen=Abrir
+PopupExtract=Extrair...
+PopupRename=Alterar nome
+PopupDelete=Apagar
+PopupInfoFile=Informações...
+PopupCreateDir=Fazer uma pasta...
+
+[ToolBar]
+New=Novo
+NewToolTip=Criar um ficheiro MPQ...
+Open=Abrir
+OpenToolTip=Abrir um ficheiro MPQ...
+InfoMPQ=Informação MPQ
+InfoMPQToolTip=Ver propriedades do MPQ...
+Add=Adicionar
+AddToolTip=Addicionar ficheiros no Arquivo...
+Extract=Extrair
+ExtractToolTip=Extrair ficheiros do Arquivo...
+Delete=Apagar
+DeleteToolTip=Apagar ficheiros do Arquivo
+View=Ver
+ViewToolTip=Ver ficheiro
+InfoFile=Informação do ficheiro
+InfoFileToolTip=Ver propriedades do ficheiro(s) selecionado(s)...
+MakeEXE=Fazer EXE
+MakeEXEToolTip=Faze EXE com MPQDraft...
+Exit=Sair
+ExitToolTip=Sair do PowerMPQ
+
+[Column]
+Name=Nome
+Size=Tamanho
+Compressed=Tamanho Comp.
+Ratio=Ratio
+Attribute=Attributos
+
+[StatusBar]
+Delete=A apagar ficheiro: %v
+Extract=A extrair ficheiro: %v
+Add=A addicionar ficheiro: %v
+Ready=Preparado
+Open=A abrir MPQ: %v
+ReadList=A ler lista do: %v
+
+[Message]
+Delete=Quer apagar os ficheiros?
+RemoveFileList=Quer remover a lista?
+CreateDir=Nova pasta
+
+[InfoMPQ]
+Property=Propriedade
+Compression=Compressão
+Path=Caminho:
+Name=Nome do Ficheiro:
+Size=Tamanho:
+Decompress=Descompresado:
+NFiles=Total de Ficheiros:
+NFilesView=Ver Ficheiros:
+Last=Ultima alteração:
+
+[InfoFile]
+Property=Propriedade
+Compression=Compressão
+Name=Nome:
+Type=Tipo:
+Size=Tamanho:
+Compress=Tamanho Compressado:
+Ratio=Ratio:
+Attribute=Attributo:
+Path=Caminho:
+
+[Configuration]
+Configuration=Configuração
+General=General
+Compression=Compressão
+FileList=Lista de Ficheiros
+Language=Linguagem
+MaxFiles=Maximo de ficheiros no arquivo: (Isto nao pode ser mudado para um arquivo existente)
+Encrypt=Codificar ficheiros no MPQ
+Associate=Associar PowerMPQ ao arquivo MPQ
+Standard=Normal
+Default=Compressão Normal
+Deflate=Deflate nivel de compressão
+Custom=Custom
+Extension=Extensão do ficheiro
+CompressionType=Tipo de compressão
+Audio=Compressão de Audio
+Lowest=Baixa (Qualidade Melhor)
+Medium=Media
+Highest=Alta (Menos espaço)
+AddExt=Addicionar
+RemoveExt=Remover
+AddList=Addicionar lista de ficheiros...
+RemoveList=Remover
+UseList=Não use as lista em cima quando uma se encontra no arquivo
+SelectLanguage=Selecione a linguagem:
+Ok=Ok
+Cancel=Cancelar
+
+[Various]
+Version=Versão
+ThisProgramUse=Este programa usa
+
+[MPQEmbedder]
+FileName=Meta o nome do ficheiro:
+Information=Informação
+Add=Addicionar MPQ...
+ExportMPQ=Exportar MPQ...
+ExportEXE=Exportar EXE...
+Close=Fechar
+NoFile=Sem ficheiro.
+OkMPQ=Este ficheiro contem um arquivo MPQ.
+KoMPQ=Este ficheiro contem um arquivo MPQ, mas outros programas podem não conseguir ler.
+NoMPQ=Este ficheiro nao contem um arquivo MPQ.
+IsMPQ=Este ficheiro é um arquivo MPQ.
+NoEXE=Este ficheiro não é um arquivo EXE.

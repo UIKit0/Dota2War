@@ -1,0 +1,27 @@
+# created by Biturn
+# materials for file Dryad.obj
+
+newmtl Dryad
+Ka 0.625000 0.625000 0.625000
+Kd 0.996094 0.996094 0.996094
+Ks 0.468750 0.468750 0.468750
+map_Kd Dryad.tga
+
+newmtl Dust3x
+Ka 0.625000 0.625000 0.625000
+Kd 0.996094 0.996094 0.996094
+Ks 0.468750 0.468750 0.468750
+map_Kd Dust3x.tga
+
+newmtl gutz
+Ka 0.625000 0.625000 0.625000
+Kd 0.996094 0.996094 0.996094
+Ks 0.468750 0.468750 0.468750
+map_Kd gutz.tga
+
+newmtl Star8b
+Ka 0.625000 0.625000 0.625000
+Kd 0.996094 0.996094 0.996094
+Ks 0.468750 0.468750 0.468750
+map_Kd Star8b.tga
+

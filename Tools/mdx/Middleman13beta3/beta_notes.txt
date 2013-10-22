@@ -1,0 +1,14 @@
+The only thing added in this release is the specular power fix.
+
+When middleman finds a material and modifies it, it writes a comment next to it like so....
+
+  Material Mtl__10 {
+  0.588000; 0.588000; 0.588000; 1.000000;;
+  77.000 ;  //                               << Modified By Middleman 1.3 >>  
+  1.000000; 1.000000; 1.000000;;
+
+
+I`ve tested the specular fix on several of my files and it works fine, it may be worth just checking that
+<< Modified By Middleman 1.3 >> only appears next to the specular powers in the x file. If it appears elsewhere
+be sure to let me know.
+

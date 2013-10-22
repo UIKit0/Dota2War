@@ -1,0 +1,131 @@
+Middle Man
+Verison 1.3 beta 3
+Programming by Chris File
+chris.file@tesco.net
+http://thegreatptmd.tripod.com (http://takeoff.to/landing)
+
+New in 1.3 beta 3
+
+Fixed the numbers below 0.1 being written back to the X file incorrectly (caused opacity values to be increased and also some colours to turn out wrong is FS)
+
+New in 1.3 beta 2
+
+Added a specular colour fix, so that the specular colour is correct when theres a texture in the diffuse channel of the material
+
+New in 1.3 beta 1
+
+Added function that fixes the specular power given by the exporter, you can now enter you specular power in gmax and not have to edit the files by hand. See below for more details.
+
+New in 1.2
+
+Supports mdlcommander (see bottom of document for details)
+errm, change the version number 
+arrr, added a bit more to this document 
+
+New in 1.1
+Supports the makemdl in the FS2002 Makemdl SDK
+No longer relies on the GMAXLOC enviroment variable to find its config files and makemdl
+
+Some of the options not givin by the makemdl GUI......
+
+write DLL  - creates the FS2002 model in the old DLL style, not the new non DLL format
+batch mode - turn off to allow access to the makemdl interface before compiling (handy if you want to set some scenery options middle man can`t do for you (hdg, distance)
+debug - will put makemdl into debug mode and give you all the options via its interface (batch mode needs to be off, i think)
+Combat flightsim 2 - urm create a CFS2 model not a FS2002 one.
+
+What is it?
+
+Middle man is a program that sits inbetween the gmax exporter and makemdl (and now mdlcommander). 
+
+What does it do?
+
+if your exporting a virtual cockpit it will rename the my_interior file to my_interior.x and add it to the LOD list in makemdl
+will run makemdl with your default options, plus some that makemdl dosn`t give you access to
+Lets you create a list of named scenery locations for easy scenery export, one can be set as default
+
+Installation.
+
+In your .../gmax/plugins folder rename makemdl.exe to makem.exe
+Then extract makemdl.exe from this zip file to your ../gmax/plugins folder
+
+If installing along with mdlcommander please see the bottom of this document
+
+Using.
+
+To run in just options setting mode, run makemdl.exe from windows.
+
+Otherwise choose export from the gmax menu as normal.
+
+
+Changing the options
+
+Click on the options tab and set your options, once set you can click GO to run the real makemdl with these options or click save to save them as the default options.
+Clicking Load MS Default will load in the Microsoft defaults.
+
+The Scenery list
+
+The scenery list allows you to save a list of lon and lat coordinates under a name.
+
+To add an item to the list type the name into the name box and the lat/lon into the lat/lon box then click ADD, the item will not be added if there is one with that name already.
+
+To Delete an item, select the item and click DELETE. If there is only one item in the list then you cannot delete it. If the deleted item is your default item then the default item will be set to the first in the list.
+
+To edit an item, select the item then type in the edited name/latlon and then click EDIT
+
+To set an item as your default then select the item and click SET AS DEFAULT
+
+
+Specular Power Fix
+
+This feature fixes a problem with the fs2002 exporter dividing the specular power set in gmax by 100. To use this function you need to have MDL commander installed.
+
+New options added are:
+
+Fix Specular		(Accessable when Save X File is checked, with this option set middleman runs through the X files and adjusts each materials specular power)
+Compile X File		(Accessable when Fix Specular is checked, with this option set, after applying the specular fix, middleman will run the X file/s through makemdl as normal)
+
+See specular.htm for more details
+
+
+Previous Versions (supporting makemdl on FS2002 Pro CD`s)
+
+New in 1.0.3b
+
+CFS option disabled and CFS2 option restored to original, as CFS and CFS2 switch both create CFS2 Models, also eliminating the need to edit makemdl.exe 
+
+New in 1.0.3
+
+CFS2 option is now available, problems with it makemdl reading the cfs2 option as cfs and model name of 2 has been resolved by changing the option to cf.
+
+The CFS,CFS2,FS7 and FS8 Checkboxes are now mutualy exclusive, so one will always be selected.
+
+MDLCommander and Middleman
+
+Mdlcommander is a freeware application that allows you to save the X files created by the exporter, there for allowing you to use discreet lod and seperate model files for the exterior model and virtual cockpit, also create a shadow file. Its all in the MS Makemdl SDK (  http://zone.msn.com/flightsim/FS02DevDeskSDK00.asp )
+
+Mdlcommander was written by Doc Moriarty ( docmoriarty@gmx.net ) and is available from http://hometown.aol.de/docmoriarty3/fs2002
+
+Mdlcommander can be run on its own, but running it through middleman lets you set its options via the middleman frontend.
+
+To run both middleman and mdlcommander you need to install them like so.....
+
+Rename makemdl.exe (original MS makemdl) to mkmdl.exe
+Rename mdlcommander.exe to makem.exe
+Leave middlemans name as makemdl.exe
+
+Now when you export from gmax the pipeline will be as follows
+
+GMAX -> FSMODELEXP.DLE (exporter) -> Middleman (makemdl.exe) -> MdlCommander (makem.exe) -> Makemdl (mkmdl.exe)
+
+The new options in makemdl to support mdlcommander are as follows
+
+
+SaveXFile    - saves the x file to your gmax/plugins folder
+nocompile    - Tells mdlcommander not to run makemdl (only available when saveXfile is selected, basically only create X file not mdl/bgl)
+AutoInterior - automatically creates a copy of your exterior model to be used as the virtual cockpit model (if you have exterior and interior groups in gmax middleman will supress this 		option)
+
+batch mode  - Yes i know this option has always been there, but now it will supress mdlcommanders removal of the batch mode from the final command line sent to makemdl.
+
+
+
+http://thegreatptmd.tripod.com

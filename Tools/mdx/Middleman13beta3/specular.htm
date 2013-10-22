@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+		<meta content="Microsoft Visual Studio.NET 7.0" name="GENERATOR">
+		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+	</head>
+	<body>
+		<H3>Specular Highlights (Dynamic Shine) using GMAX 1.2 Material Editor, Middleman 
+			1.3 and MDL Commander</H3>
+		<P><IMG height="471" alt="" src="mated.jpg" width="365"></P>
+		<P>In the image of the material editor in gmax 1.2:</P>
+		<P><STRONG>1 : This is the Specular power </STRONG>
+		</P>
+		<P><STRONG>2: This is the specular colour, use this to set the specular colour when the 
+				material does NOT&nbsp;have a texture loaded into the diffuse channel.</STRONG></P>
+		<P><STRONG>3: Use the diffuse colour to set the specular colour when the material HAS a 
+				texture loaded into the diffuse channel.</STRONG></P>
+		<P><STRONG>(Note : The 2 items with a red X by them won`t have any effect on the 
+				specular highlight in FS2002 )</STRONG></P>
+		<P>The reason for the above (3) is that the exporter sets the proper specular 
+			colour to white when a texture is loaded into the diffuse channel, regardless 
+			of the colour in number 2, middleman will in this case replace the specular 
+			colour with the diffuse colour before send the file for compiling.</P>
+		<P>Thats about it for inside GMAX.</P>
+		<P><STRONG>The Export:</STRONG></P>
+		<P><STRONG>Make sure you have mdl commander installed (see main readme)</STRONG></P>
+		<P><STRONG><IMG alt="" src="mman.jpg"></STRONG></P>
+		<P><STRONG>The new options added to middleman are only enabled when the save X file 
+				open is selected.</STRONG></P>
+		<P><STRONG>The 2 new options are, </STRONG>
+		</P>
+		<P><STRONG>Fix Specular - This will tell middleman to correct the specular power and 
+				colour in the X file&nbsp; so it matches&nbsp;whats entered in the gmax 
+				material editor</STRONG></P>
+		<P><STRONG>Compile X File - This will tell middleman to send the X file to makemdl once 
+				its&nbsp;applied the specular fix (&nbsp;pretty much the same as the&nbsp;MDL 
+				commander No Compile option)</STRONG>&nbsp;</P>
+		<P>&nbsp;</P>
+		<P><STRONG>Now all thats left to do is hit GO.</STRONG></P>
+	</body>
+</html>
